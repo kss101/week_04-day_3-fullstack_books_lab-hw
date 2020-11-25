@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <form action="/books/{{book.id}}" method="POST">
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" 
+                name="title"
+                id="title"
+                value="{{book.title}}"
+                required 
+                autofocus>
+        </div>
+        <div>
+            <label for="genre">Genre:</label>
+            <input type="text" 
+                name="genre"
+                id="genre" 
+                value="{{book.genre}}"
+                required>
+            </div>
+            <div>
+                <label for="publisher">Publisher:</label>
+                <input type="text" 
+                    name="publisher"
+                    id="publisher" 
+                    value="{{book.publisher}}"
+                    required>
+                </div>
+            <!-- <div>
+                <label for="author_first_name">Author's First Name:</label>
+                <input type="text"
+                    name="author_first_name"
+                    id="author_first_name"
+                    value="{{book.author.first_name}}"
+                    required>
+                <label for="author_last_name">Author's Last Name:</label>
+                <input type="text"
+                        name="author_last_name"
+                        id="author_last_name"
+                        value="{{book.author.last_name}}"
+                        required>
+            </div> -->
+            <div>
+                <label for="author_id">Author:</label>
+                <select name="author_id" id="author_id">
+                    {% for author in authors %}  
+                        <option value="{{author.id}}">{{author.full_name()}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+    <button type="submit">Confirm book edit</button>
+</form>
+{% endblock %}
